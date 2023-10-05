@@ -20,6 +20,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         ballRadius = ballPrefab.GetComponent<SphereCollider>().radius * 100f;
         ballDiameter = ballRadius * 2f;
+        PlaceAllBalls();
     }
 
     // Update is called once per frame
@@ -98,7 +99,7 @@ public class NewBehaviourScript : MonoBehaviour
                 currentPosition += new Vector3(1, 0, 0).normalized * ballDiameter;
             }
             // MOVE TO THE NEXT ROW
-            firstInRowPosition += new Vector3(-1, 0, -1).normalized * ballDiameter;
+            firstInRowPosition += Vector3.back * (Mathf.Sqrt(3) * ballRadius) + Vector3.left * ballRadius;
             currentPosition = firstInRowPosition;
             NumInThisRow++;
         }
